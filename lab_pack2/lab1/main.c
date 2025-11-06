@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    long long n = 3;
+    int n = 3;
     int base = 5;
     
     bool* res = calloc(n, sizeof(bool));
