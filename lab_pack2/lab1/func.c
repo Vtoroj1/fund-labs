@@ -21,6 +21,7 @@ ErrorCode check(const int base, bool* res, const int n, ...) {
         number = va_arg(num, double);
 
         if (number <= 0.0 || number >= 1.0) {
+            va_end(num);
             return ERROR_WRONG_NUMBER;
         }
 
@@ -64,7 +65,7 @@ ErrorCode check(const int base, bool* res, const int n, ...) {
                 }
             }
         }
-
+        
         if (flag == 1) {
             res[i] = false;
             continue;
