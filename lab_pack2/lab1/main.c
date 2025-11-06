@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc != 1) {
-        printf("Ошибка: нет аргументов. \n");
+        printf("Ошибка: аргументы задаются внутри кода. \n");
         return 1;
     }
 
