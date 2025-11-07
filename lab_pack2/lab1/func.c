@@ -29,7 +29,7 @@ ErrorCode check(const int base, bool* res, const int n, ...) {
         long long denominator = 1e15;
 
         if (number * 1e15 - (double)numerator > 1e-15) {
-            printf("Число №%d является переодической дробью. \n", i + 1);
+            printf("Число №%d возможно является переодической дробью. \n", i + 1);
         }
 
         long long n1 = numerator;
@@ -68,10 +68,9 @@ ErrorCode check(const int base, bool* res, const int n, ...) {
         
         if (flag == 1) {
             res[i] = false;
-            continue;
+        } else {
+            res[i] = true; 
         }
-
-        res[i] = true;
     }
 
     va_end(num);

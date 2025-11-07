@@ -9,15 +9,15 @@ int main(int argc, char* argv[]) {
     }
 
     int n = 3;
-    int base = 5;
+    int base = 7;
     
-    bool* res = calloc(n, sizeof(bool));
+    bool* res = (bool*)calloc(n, sizeof(bool));
     if (res == NULL) {
         printf ("Ошибка: не удалось выделить необходимую память. \n");
         return 1;
     }
 
-    ErrorCode ans = check(base, res, n, 0.5, 0.75, 2.0);
+    ErrorCode ans = check(base, res, n, 0.3, 1.0, 0.3);
 
     switch (ans)
     {
