@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "func.h"
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
             break;
         
         case 'a':
-            int sum;
+            long int sum;
             switch(sumNat(num, &sum))
             {
                 case ERROR_NULL_POINTER:
@@ -105,13 +105,13 @@ int main(int argc, char* argv[]) {
                     return 1;
                 
                 case SUCCESS:
-                    printf("%d\n", sum);
+                    printf("%ld\n", sum);
                     break;
             }
             break;
         
         case 'f':
-            int factor;
+            long long int factor;
             switch(findFact(num, &factor))
             {
                 case ERROR_NULL_POINTER:
@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
                     return 1;
                 
                 case SUCCESS:
-                printf("%d\n", factor);
+                printf("%lld\n", factor);
                 break;
             }
             break;

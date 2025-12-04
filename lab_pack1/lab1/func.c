@@ -1,13 +1,13 @@
-#include "functions.h"
+#include "func.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <limits.h>
 
-int abs(int x) {
+unsigned int abs(int x) {
     return (x > 0) ? x: -x;
 }
 
-long power(int base, int exp) {
+long power(const int base, const int exp) {
     long res = 1;
     for (int i = 0; i < exp; i++) {
         res *= base;
@@ -16,10 +16,10 @@ long power(int base, int exp) {
     return res;
 }
 
-int fact(int x) {
-    int f = 1;
+int fact(const int x) {
+    long long int f = 1;
     for (int i = 2; i <= x; i++) {
-        if (f > INT_MAX / i || f < 0) {
+        if (f > LLONG_MAX / i || f < 0) {
             return ERROR_OVERFLOW;
         }
         f *= i;
@@ -27,24 +27,25 @@ int fact(int x) {
     return f;
 }
 
-ErrorCode strToInt(char* first, int base, int* res) {
+ErrorCode strToInt(const char* first, const int base, int* res) {
     if (first  == NULL || res == NULL) {
         return ERROR_NULL_POINTER;
     }
 
     int result = 0;
+    const char* current = first;
 
-    int sign = 1;
+    short int sign = 1;
     if (*first == '-') {
         sign = -1;
-        first++;
+        current++;
     }
-    if (*first == '\0') {
+    if (*current == '\0') {
         return ERROR_NO_DIGITS_AFTER_MINUS;
     }
 
-    while (*first) {
-        char c = *first;
+    while (*current) {
+        char c = *current;
         int digit = 0;
 
         if (isdigit(c)) {
@@ -65,7 +66,7 @@ ErrorCode strToInt(char* first, int base, int* res) {
 
         result = result * base + digit;
 
-        first++;
+        current++;
     }
 
     *res = result * sign;
@@ -73,7 +74,7 @@ ErrorCode strToInt(char* first, int base, int* res) {
     return SUCCESS;
 }
 
-ErrorCode findKrat(int x) {
+ErrorCode findKrat(const int x) {
     if (x == 0) {
         return ERROR_ZERO_DIVISION;
     }
@@ -92,7 +93,7 @@ ErrorCode findKrat(int x) {
 
 }
 
-ErrorCode checkPrime(int x) {
+ErrorCode checkPrime(const int x) {
     if (x < 2) {
         return ERROR_NOT_PRIME_OR_COMPOSITE;
     }
@@ -106,11 +107,11 @@ ErrorCode checkPrime(int x) {
         return SUCCESS;
 }
 
-ErrorCode intoHex(int x) {
+ErrorCode intoHex(const int x) {
     char sp[32];
-    int k = 0;
-    int cur;
-    int chislo = abs(x);
+    short unsigned int k = 0;
+    short unsigned int cur;
+    unsigned int chislo = abs(x);
 
     while (chislo) {
         cur = chislo % 16;
@@ -136,7 +137,7 @@ ErrorCode intoHex(int x) {
     return SUCCESS;
 }
 
-ErrorCode tablePower(int x) {
+ErrorCode tablePower(const int x) {
     if (x > 10 || x <= 1) {
         return ERROR_NUMBER_OUT_OF_RANGE;
     }
@@ -152,7 +153,7 @@ ErrorCode tablePower(int x) {
     return SUCCESS;
 }
 
-ErrorCode sumNat(int x, int* res) {
+ErrorCode sumNat(const int x, long* res) {
     if (res == NULL) {
         return ERROR_NULL_POINTER;
     }
@@ -161,9 +162,9 @@ ErrorCode sumNat(int x, int* res) {
         return ERROR_NUMBER_MUST_BE_NATURAL;
     }
 
-    int s = 0;
+    long int s = 0;
     for (int i = 1; i <= x; i++) {
-        if (INT_MAX - i < s || s < 0) {
+        if (LONG_MAX - i < s || s < 0) {
             return ERROR_OVERFLOW;
         }
         s += i;
@@ -174,7 +175,7 @@ ErrorCode sumNat(int x, int* res) {
     return SUCCESS;
 }
 
-ErrorCode findFact(int x, int* res) {
+ErrorCode findFact(const int x, long long* res) {
     if (res == NULL) {
         return ERROR_NULL_POINTER;
     }

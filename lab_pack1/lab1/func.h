@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef FUNC_H
+#define FUNC_H
 
 typedef enum {
     SUCCESS = 0,
@@ -16,13 +16,13 @@ typedef enum {
     ERROR_NUMBER_CANT_BE_NEGATIVE
 } ErrorCode;
 
-ErrorCode strToInt(char* first, int base, int* otvet);
+ErrorCode strToInt(const char* first, const int base, int* otvet);
 
-ErrorCode findKrat(int x);
-ErrorCode checkPrime(int x);
-ErrorCode intoHex(int x);
-ErrorCode tablePower(int x);
-ErrorCode sumNat(int x, int* res);
-ErrorCode findFact(int x, int* res);
+ErrorCode findKrat(const int x);
+ErrorCode checkPrime(const int x);
+ErrorCode intoHex(const int x);
+ErrorCode tablePower(const int x);
+ErrorCode sumNat(const int x, long int* res);
+ErrorCode findFact(const int x, long long int* res);
 
 #endif
