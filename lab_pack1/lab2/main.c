@@ -49,16 +49,16 @@ int main(int argc, char *argv[]){
 
     int* prime_numbers = (int*)calloc(max_number, sizeof(int));
 
-    if (findPrime(max_number, prime_numbers) == 1) {
+    if (findPrime(max_number, prime_numbers)) {
         free(prime_numbers);
         free(nums);
         printf("Не удалось найти простые числа\n");
         return 1;
     }
 
-    printf("\nРезультат:\n");
+    printf("Результат:\n");
     for (int i = 0; i < num; i++) {
-            printf("%d \n", prime_numbers[nums[i] - 1]);
+        printf("%d \n", prime_numbers[nums[i] - 1]);
     }
 
     free(prime_numbers);

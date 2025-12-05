@@ -1,7 +1,4 @@
 #include "func.h"
-#include <stdio.h>
-#include <ctype.h>
-#include <limits.h>
 
 unsigned int abs(int x) {
     return (x > 0) ? x: -x;
@@ -16,7 +13,7 @@ long power(const int base, const int exp) {
     return res;
 }
 
-int fact(const int x) {
+long long int fact(const int x) {
     long long int f = 1;
     for (int i = 2; i <= x; i++) {
         if (f > LLONG_MAX / i || f < 0) {
@@ -74,7 +71,7 @@ ErrorCode strToInt(const char* first, const int base, int* res) {
     return SUCCESS;
 }
 
-ErrorCode findKrat(const int x) {
+ErrorCode findKrat(const int x) { //h
     if (x == 0) {
         return ERROR_ZERO_DIVISION;
     }
@@ -93,7 +90,7 @@ ErrorCode findKrat(const int x) {
 
 }
 
-ErrorCode checkPrime(const int x) {
+ErrorCode checkPrime(const int x) { //p
     if (x < 2) {
         return ERROR_NOT_PRIME_OR_COMPOSITE;
     }
@@ -107,7 +104,7 @@ ErrorCode checkPrime(const int x) {
         return SUCCESS;
 }
 
-ErrorCode intoHex(const int x) {
+ErrorCode intoHex(const int x) { //s
     char sp[32];
     short unsigned int k = 0;
     short unsigned int cur;
@@ -125,10 +122,6 @@ ErrorCode intoHex(const int x) {
         return SUCCESS;
     }
     
-    if (x < 0) {
-        printf("- ");
-    }
-
     for (int i = k - 1; i >= 0; i--) {
         printf("%c ", sp[i]);
     }
@@ -137,7 +130,7 @@ ErrorCode intoHex(const int x) {
     return SUCCESS;
 }
 
-ErrorCode tablePower(const int x) {
+ErrorCode tablePower(const int x) { //e
     if (x > 10 || x <= 1) {
         return ERROR_NUMBER_OUT_OF_RANGE;
     }
@@ -153,7 +146,7 @@ ErrorCode tablePower(const int x) {
     return SUCCESS;
 }
 
-ErrorCode sumNat(const int x, long* res) {
+ErrorCode sumNat(const int x, long int* res) { //a
     if (res == NULL) {
         return ERROR_NULL_POINTER;
     }
@@ -175,13 +168,17 @@ ErrorCode sumNat(const int x, long* res) {
     return SUCCESS;
 }
 
-ErrorCode findFact(const int x, long long* res) {
+ErrorCode findFact(const int x, long long int* res) { //f
     if (res == NULL) {
         return ERROR_NULL_POINTER;
     }
 
     if (x < 0) {
         return ERROR_NUMBER_CANT_BE_NEGATIVE;
+    }
+
+    if (x > 20) {
+        return ERROR_OVERFLOW;
     }
 
     *res = fact(x);

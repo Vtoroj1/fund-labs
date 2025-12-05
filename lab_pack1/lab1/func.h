@@ -1,6 +1,10 @@
 #ifndef FUNC_H
 #define FUNC_H
 
+#include <stdio.h>
+#include <ctype.h>
+#include <limits.h>
+
 typedef enum {
     SUCCESS = 0,
     ALTERNATIVE_SUCCESS,
