@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef FUNC_H
+#define FUNC_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +9,7 @@
 #include <math.h>
 
 typedef enum {
-    SUCCESS = 0,
+    SUCCESS,
     NEGATIVE_DISCRIMINANT,
     NOT_A_SQUARE_EQUATION,
     NO_ROOTS,
